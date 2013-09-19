@@ -1,9 +1,5 @@
-<h1>Welcome</h1>
+<% @posts.each do |post| %>
+	<%= render 'posts/post', post: post %>
 
-<p>
-This is the landing page for tumblite. Made using Ruby on Rails 4.
-</p>
-
-<p>
-This is just a placeholder. I'll replace this with awesome content soon! :)
-</p>
+	<br><hr><br>
+<% end %>
