@@ -4,14 +4,31 @@
 	  <title>Tumblite</title>
 	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+	  <!-- Latest compiled and minified Bootstrap CSS -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
 	  <%= csrf_meta_tags %>
 	</head>
 
 	<body>
-		<%= link_to "Home", root_path %>
-		<%= link_to "About", about_path %>
+		<div class="container">
+			<div class="page-header">
+				<ul class="nav nav-pills pull-right">
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "About", about_path %></li>
+				</ul>
+				<h1><%= link_to "tumblite", root_path %>
+				<small>// tumblr-style goodness</small>
+				</h1>
+			</div>
 
-		<%= yield %>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
 	</body>
 
 </html>
