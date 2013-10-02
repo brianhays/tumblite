@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Tumblite::Application.config.secret_key_base = '84260487699265e3be9428fbd4bf09e017d0db4ac439195ec5b4482056a087019bf28771df33953f234c3a8b1e7a9c996e6751a57c1216b9802b76c7f2504a14'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Tumblite::Application.config.secret_key_base = secure_token
